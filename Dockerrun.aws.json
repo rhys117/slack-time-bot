@@ -2,7 +2,7 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "name": "server",
+      "name": "slack-time",
       "image": "rhys117/slack-time",
       "hostname": "slack-time",
       "essential": false,
