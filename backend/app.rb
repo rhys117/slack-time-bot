@@ -1,8 +1,8 @@
 require 'sinatra'
-require 'dotenv/load'
 
 if development?
   require 'sinatra/reloader'
+  require 'dotenv/load'
   require 'pry'
 end
 
