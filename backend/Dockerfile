@@ -7,5 +7,5 @@ COPY Gemfile ./
 RUN bundle install --without development test
 
 COPY . .
-
+EXPOSE 80
 CMD ["ruby", "app.rb"]

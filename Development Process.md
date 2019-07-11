@@ -53,7 +53,16 @@ https://api.slack.com/docs/verifying-requests-from-slack#signing_secrets_admin_p
 
 I've added a before block that will return 403 unless the request is validated.
 
-## CI
+## CI/CD
 We have our app, but now what about deploying it. Lets dockerize our app and ensure it's production ready.
 
 I've added a dockerfile and a dockerfile.dev and setup a docker-compose file for local development.
+
+I've configured a travis yml file and added it to Travis CI. 
+
+Now once changes are pushed to master travis will build my docker images and run my tests and send me a report.
+
+## AWS
+Afterwards I've setup an elasticbeanstalk instance and iem keys and added the configuration to the travis yml and setup my env variables on aws.
+
+I pushed my changes and confirmed that it was now running on AWS 

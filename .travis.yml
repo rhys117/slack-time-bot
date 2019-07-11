@@ -4,10 +4,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t rhys117/slack-time -f ./backend/Dockerfile.dev ./backend
+  - docker build -t rhys117/slack-time-test -f ./backend/Dockerfile.dev ./backend
 
-scripts:
-  - docker run -e CI=true rhys117/slack-time rspec
+script:
+  - docker run -e CI=true rhys117/slack-time-test rspec
 
 after_success:
   - docker build -t rhys117/slack-time ./backend
@@ -15,3 +15,16 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take image and push to docker hub
   - docker push rhys117/slack-time
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "slack-time"
+  env: "SlackTime-env"
+  bucket_name: "elasticbeanstalk-us-east-2-902073747984"
+  bucket_path: "slack-time"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
