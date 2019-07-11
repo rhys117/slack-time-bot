@@ -6,8 +6,9 @@ describe "Time API" do
     expect(last_response).to be_ok
   end
 
-  it "post requests to /time to current time" do
+  it "post requests to /time respond with correct time" do
     response = post '/time'
-    expect(Time.parse(response.body).round).to eq(Time.now.round)
+    differences_in_time = Time.now - Time.parse(response.body.split('is:').last)
+    expect(differences_in_time).to be_within(2).of(0)
   end
 end

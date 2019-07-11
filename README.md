@@ -1,32 +1,11 @@
-# Task
-Write a Slack bot that responds to a slash command with the current time of day.
-Specifications
-- Choose any programming language you are comfortable with
-- Bot should respond to slash command (e.g. ‘/time’) in a public channel
-- Expected time taken: 1-2 hours
-- Response formatting and structure is up to you
+# Backend API for a slack command bot that tells the time.
+## Backend ENV variables that need to be set:
+- SERVER_PORT
+- SLACK_SIGNING_SECRET
 
-# Development Process
-### 1. Identify Needs
-Searching Slacks API docs. 
-- After consideration the following documentation best suited the applications purpose: https://api.slack.com/slash-commands
+The server port can be a any port of your choosing. 
 
-Let's focus on the key points of what happens when a slash command is issued from a slack app
-- A user in Slack types in the message box with the command, and submits it.
-- A data payload is sent via an HTTP POST request to the URL configured for that command in your app.
-- The app responds in some way.
+The slack signing secret comes from the slack app itself and can be found under basics settings on api.slack.com.
 
-Considering this is a simple application that only needs to respond to a HTTP POST request I concluded that a simple ruby sinatra web application would be suitable for this task.
-
-## 2. Development
-#### Slack Workplace
-As per the documentation I created a slack application. I already had a test slack 'workplace', so I added it to my existing workplace.
-
-#### Considering working locally
-Seeing as I wanted an endpoint that the slack api could point to during development I used ngrok to make my localhost reachable.
-
-#### Configuring slash comand
-I added a new slash command via the slack api portal that pointed to my ngrok forwarding addresses adding '/time'.
-
-#### Setup of sinatra app
-Adding the ruby-version file and Gemfile and adding the relevant gems. I also setup rspec as per the recipes.sinatrab documenation.
+If you're using this you'll need ot configure your slack app to have a slash command for /time that points to this API endpoint.
+- eg. myapi.com/time
