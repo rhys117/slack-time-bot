@@ -9,3 +9,5 @@ The slack signing secret comes from the slack app itself and can be found under 
 
 If you're using this you'll need ot configure your slack app to have a slash command for /time that points to this API endpoint.
 - eg. myapi.com/time
+
+Sources other than slack will not be able to reach this endpoint.

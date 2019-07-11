@@ -18,6 +18,12 @@ Let's focus on the key points of what happens when a slash command is issued fro
 
 Considering this is a simple application that only needs to respond to a HTTP POST request I concluded that a simple ruby sinatra web application would be suitable for this task.
 
+I then planned to use the following tools 
+- Ngrok locally
+- Travis CI 
+- Docker 
+- AWS
+
 ## 2. Development
 #### Slack Workplace
 As per the documentation I created a slack application. I already had a test slack 'workplace', so I added it to my existing workplace.
@@ -65,4 +71,15 @@ Now once changes are pushed to master travis will build my docker images and run
 ## AWS
 Afterwards I've setup an elasticbeanstalk instance and iem keys and added the configuration to the travis yml and setup my env variables on aws.
 
-I pushed my changes and confirmed that it was now running on AWS 
+I pushed my changes and confirmed that it was now running on AWS.
+
+I then updated my my slash command in Slack API to have the AWS entpoint and confirmed that it was working. 
+
+I also confirmed that attempts to hit the endpoint not from slack were getting 403 errors.
+
+One thing I did notice was the time was wrong, I hadn't accounted for it running on american servers. I updated the dockerfile to include the correct timezone.
+
+## Other thoughts
+This still isn't perfect, It's running on WEBrick and doesn't have an nginx web server in front of it.
+
+It might be nice to integrate options with the command such as timezone and give custom responses. 
