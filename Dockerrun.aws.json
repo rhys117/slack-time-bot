@@ -1,18 +1,13 @@
 {
-  "AWSEBDockerrunVersion": 2,
-  "containerDefinitions": [
+  "AWSEBDockerrunVersion": 1,
+  "Image": {
+    "Name": "rhys117/slack-time",
+    "Update": "true"
+  },
+  "Ports": [
     {
-      "name": "slack-time",
-      "image": "rhys117/slack-time",
-      "hostname": "slack-time",
-      "essential": false,
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 80
-        }
-      ],
-      "memory": 128
+      "ContainerPort": 80,
+      "HostPort": 80
     }
   ]
 }
