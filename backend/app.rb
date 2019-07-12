@@ -4,6 +4,7 @@ if development?
   require 'sinatra/reloader'
   require 'dotenv/load'
   require 'pry'
+  set :bind, '0.0.0.0'
 end
 
 set :port, ENV['SERVER_PORT']
